@@ -1,43 +1,33 @@
 console.log('I see you came to the console...');
 
-var circleRadii = [40, 20, 10];
+var barData = [5, 10, 15, 20, 25, 30, 30, 25, 20, 15, 10, 5];
+var barHeightScale = 5;
+var barWidth = 25;
+var barSpacing = 4;
+var svgContainerHeigth = barHeightScale * Math.max.apply(Math, barData);
+var svgContainerWidth = barData.length * (barWidth + barSpacing) - 4;
 
 var svgContainer = d3.select('body')
-                      .append('svg')
-                      .attr('width', 200)
-                      .attr('height', 200);
+                     .append('svg')
+                     .attr('width', svgContainerWidth)
+                     .attr('height', svgContainerHeigth);
 
-var circles = svgContainer.selectAll('circle')
-                          .data(circleRadii)
-                          .enter()
-                          .append('circle');
+var bars = svgContainer.selectAll('rect')
+                       .data(barData)
+                       .enter()
+                       .append('rect'); // get rect m8
 
-var circleAttributes = circles
-                       .attr('cx', 50)
-                       .attr('cy', 50)
-                       .attr('r', function (d) {
-                           return d;
-                       })
-                       .style('fill', function (d) {
-                           var color;
-                           if (d === 40){
-                               color = 'green';
-                           } else if (d === 20){
-                               color = 'yellow';
-                           } else {
-                               color = 'blue';
-                           }
-                           return color;
-                       });
+var barAttributes = bars
+                        .attr('width', barWidth)
+                        .attr('height', function (d) {
+                            return d * barHeightScale;
+                        })
+                        .attr('x', function (d, i) {
+                            return i * (barWidth + barSpacing);
+                        })
+                        .attr('y', function (d, i) {
+                            return svgContainerHeigth - d * barHeightScale;
+                        })
+                        .style('fill', 'black');
 
-console.log(circleAttributes);
-
-// var s = d3.select("body")
-//         .append("svg")
-//         .attr("width", 50)
-//         .attr("height", 50)
-//         .append("circle")
-//         .attr("cx", 25)
-//         .attr("cy", 25)
-//         .attr("r", 25)
-//         .style("fill", "purple");
+console.log(barAttributes);
