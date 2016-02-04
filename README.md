@@ -1,1 +1,3 @@
-# information-visualization
+# Information Visualization
+
+Project dependencies: D3
