@@ -6,9 +6,9 @@ function main (d3) {
         var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sept', 'oct', 'nov', 'dec'];
         var years = ['2011', '2012', '2013', '2014', '2015'];
         var spacing = 1; // bar spacing as percentage of the bar width
-        var height = 200;  // height of svg container
-        var width = 400; // width of svg container
-        var padding = 60; // container padding
+        var height = 300;  // height of svg container
+        var width = 600; // width of svg container
+        var padding = 80; // container padding
         var animationSpeed = 500; // bar animation speed
         var animationDelay = 500; // bar animation delay
         var currentYear = years[0];
@@ -166,7 +166,7 @@ function main (d3) {
                                .append('text')
                                .text(currentYear)
                                .attr('x', width / 2 + padding)
-                               .attr('y', 15)
+                               .attr('y', padding - 40)
                                .attr('font-family', 'sans-serif')
                                .attr('fill', 'black')
                                .attr('text-anchor', 'middle');
@@ -180,7 +180,13 @@ function main (d3) {
                 var yAxisGroup = svg.append('g')
                                     .attr('class', 'axis')
                                     .attr('transform', 'translate(' + padding * 0.8 + ',' + padding + ')')
-                                    .call(yAxis);
+                                    .call(yAxis)
+                                    .append('text')
+                                    .text('Temperature in \u00B0C')
+                                    .attr('transform', 'rotate(-90)')
+                                    .attr('y', -padding + padding * 0.50)
+                                    .attr('x', - (height / 2))
+                                    .style('text-anchor', 'middle');
 
             } else if (update === true) {
 
@@ -230,7 +236,7 @@ function main (d3) {
 
                 d3.select('svg').selectAll('g.title').selectAll('text')
                 .text(currentYear)
-                //.attr('text-anchor', 'middle');
+                .attr('text-anchor', 'middle');
             }
         }
     });

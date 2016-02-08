@@ -2,7 +2,8 @@ p {
     font-size: 12pt;
 }
 .title text{
-    font-size: 12pt
+    font-size: 12pt;
+    font-weight: bold
 }
 .labelsbottom text {
     font-size: 9pt;
