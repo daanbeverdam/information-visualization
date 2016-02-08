@@ -1,8 +1,8 @@
 p {
     font-size: 12pt;
 }
-text {
-    font-size: 9pt;
+.title text{
+    font-size: 12pt
 }
 .labelsbottom text {
     font-size: 9pt;
@@ -16,8 +16,7 @@ text {
     stroke: black;
     shape-rendering: crispEdges;
 }
-
 .axis text {
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 9pt;
 }
