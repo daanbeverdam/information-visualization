@@ -2,9 +2,12 @@ p {
     font-size: 12pt;
 }
 text {
-    font-size: 10pt;
+    font-size: 9pt;
 }
 .labelsbottom text {
+    font-size: 9pt;
+}
+.labelstop text {
     font-size: 9pt;
 }
 .axis path,
